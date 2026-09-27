@@ -69,7 +69,7 @@ public/Products/        Provided assets (1.jpg–10.jpg)
 
 ## Time spent
 
-~3.5 hours (within the suggested 3–4 hour scope).
+~2.5 hours (within the suggested 3–4 hour scope).
 
 ## Out of scope (by design)
 

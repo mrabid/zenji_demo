@@ -32,11 +32,3 @@ context/                # Cart state (React Context)
 lib/                    # Product data
 public/Products/        # Product photography
 ```
-
-## Features
-
-- Branded header, hero, and “Shop the Drop” CTA
-- 7 product cards with size selection (XS–XXL)
-- Working demo cart (add, remove, quantity, subtotal)
-- Responsive mobile and desktop layout
-- Keyboard-friendly controls and focus management
