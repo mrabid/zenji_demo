@@ -8,6 +8,7 @@ import ProductGrid from "@/components/site/ProductGrid";
 import BrandSection from "@/components/site/BrandSection";
 import Footer from "@/components/site/Footer";
 import CartDrawer from "@/components/site/CartDrawer";
+import SwordCursor from "@/components/ui/SwordCursor";
 
 export default function Storefront() {
   return (
@@ -26,6 +27,7 @@ export default function Storefront() {
       </main>
       <Footer />
       <CartDrawer />
+      <SwordCursor />
     </>
   );
 }
