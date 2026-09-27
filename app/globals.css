@@ -8,6 +8,18 @@
   --surface: #0a0a0a;
   --surface-elevated: #111111;
   --accent: #e8e4dc;
+  --cursor-blade: #6b4a24;
+  --cursor-blade-hover: #8f6536;
+  --cursor-edge: #8f6536;
+  --cursor-edge-hover: #faf8f4;
+  --cursor-bevel: #412d15;
+  --cursor-bevel-hover: #a67c42;
+  --cursor-grip: #412d15;
+  --cursor-pin-1: #6b4a24;
+  --cursor-pin-2: #8f6536;
+  --cursor-pulse: #6b4a24;
+  --cursor-ring: rgba(143, 101, 54, 0.35);
+  --cursor-ring-hover: #8f6536;
 }
 
 @theme inline {
@@ -51,14 +63,14 @@ body {
 }
 
 @media (pointer: fine) {
-  html.custom-cursor,
-  html.custom-cursor * {
+  html[data-js-cursor="1"],
+  html[data-js-cursor="1"] * {
     cursor: none !important;
   }
 
-  html.custom-cursor input,
-  html.custom-cursor textarea,
-  html.custom-cursor [contenteditable="true"] {
+  html[data-js-cursor="1"] input,
+  html[data-js-cursor="1"] textarea,
+  html[data-js-cursor="1"] [contenteditable="true"] {
     cursor: text !important;
   }
 }
