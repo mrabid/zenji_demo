@@ -1,12 +1,12 @@
 # ZENJI — Build Notes
 
-## Submission
+## Live
 
 | Item | Link |
 |---|---|
-| Source code | [github.com/mrabid/zenji_demo](https://github.com/mrabid/zenji_demo) |
-| Live demo | Deploy from Vercel (see below) |
-| Build notes | This file |
+| **Live demo** | [zenjidemo-production.up.railway.app](https://zenjidemo-production.up.railway.app/) |
+| **Source code** | [github.com/mrabid/zenji_demo](https://github.com/mrabid/zenji_demo) |
+| **Build notes** | This file |
 
 ## Run locally
 

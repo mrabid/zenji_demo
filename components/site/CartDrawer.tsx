@@ -79,7 +79,7 @@ export default function CartDrawer() {
         aria-modal="true"
         aria-labelledby="cart-title"
         aria-hidden={!isOpen}
-        className={`absolute inset-y-0 right-0 flex w-full max-w-md flex-col border-l border-white/10 bg-zinc-950 shadow-2xl transition-transform duration-500 ease-out motion-reduce:transition-none ${
+        className={`absolute inset-y-0 right-0 flex w-full max-w-md flex-col border-l border-white/10 bg-black/95 shadow-2xl backdrop-blur-xl transition-transform duration-500 ease-out motion-reduce:transition-none ${
           isOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >

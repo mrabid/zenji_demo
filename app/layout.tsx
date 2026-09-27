@@ -27,11 +27,13 @@ export const metadata: Metadata = {
   title: "ZENJI | Wear Your Story — Anime Streetwear Australia",
   description:
     "Australian anime-inspired streetwear. Limited-edition graphic tees from THE_ORIGIN_DROP. 240gsm heavyweight cotton, oversized fit.",
+  metadataBase: new URL("https://zenjidemo-production.up.railway.app"),
   openGraph: {
     title: "ZENJI | Wear Your Story",
     description:
       "Shop THE_ORIGIN_DROP — original anime artwork on premium heavyweight cotton.",
     type: "website",
+    url: "https://zenjidemo-production.up.railway.app",
   },
 };
 

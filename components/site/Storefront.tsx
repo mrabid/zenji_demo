@@ -3,6 +3,7 @@
 import AnnouncementBar from "@/components/site/AnnouncementBar";
 import Header from "@/components/site/Header";
 import Hero from "@/components/site/Hero";
+import DropStats from "@/components/site/DropStats";
 import ProductGrid from "@/components/site/ProductGrid";
 import BrandSection from "@/components/site/BrandSection";
 import Footer from "@/components/site/Footer";
@@ -15,10 +16,11 @@ export default function Storefront() {
         <AnnouncementBar />
         <Header />
       </div>
-      <div className="h-[6.75rem] shrink-0 sm:h-[7.75rem]" aria-hidden />
+      <div className="h-[6.75rem] shrink-0 sm:h-[7.25rem]" aria-hidden />
 
       <main>
         <Hero />
+        <DropStats />
         <ProductGrid />
         <BrandSection />
       </main>

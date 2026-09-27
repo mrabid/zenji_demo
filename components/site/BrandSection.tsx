@@ -21,54 +21,60 @@ export default function BrandSection() {
     <>
       <section
         id="story"
-        className="scroll-mt-28 border-t border-white/10 bg-zinc-950 py-16 sm:py-24"
+        className="scroll-mt-28 border-t border-white/8 bg-surface py-20 sm:py-28"
         aria-labelledby="story-heading"
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+          <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
             <ScrollReveal>
-              <div className="group relative aspect-[4/5] overflow-hidden lg:aspect-[3/4]">
-                <Image
-                  src="/Products/8.jpg"
-                  alt="Limitless Tee back print with Japanese typography"
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-[1.03] motion-reduce:transition-none"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                />
+              <div className="relative">
+                <div className="absolute -left-3 -top-3 h-full w-full border border-white/10" aria-hidden />
+                <div className="group relative aspect-[4/5] overflow-hidden bg-black lg:aspect-[3/4]">
+                  <Image
+                    src="/Products/8.jpg"
+                    alt="Limitless Tee back print with Japanese typography"
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-[1.03] motion-reduce:transition-none"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                  />
+                </div>
               </div>
             </ScrollReveal>
 
             <ScrollReveal delay={120}>
               <div>
-                <p className="mb-3 font-mono text-[11px] uppercase tracking-[0.35em] text-white/45">
-                  Anime Streetwear
-                </p>
+                <p className="section-label mb-5">Anime Streetwear</p>
                 <h2
                   id="story-heading"
-                  className="font-display text-4xl leading-none tracking-[0.1em] text-white sm:text-5xl"
+                  className="font-display text-5xl leading-[0.92] tracking-[0.08em] text-white sm:text-6xl"
                 >
                   WEAR YOUR
                   <br />
                   STORY
                 </h2>
-                <div className="mt-6 space-y-4 text-sm leading-relaxed text-white/60 sm:text-base">
+
+                <blockquote className="mt-8 border-l border-white/20 pl-5">
+                  <p className="font-display text-xl leading-snug tracking-wide text-white/90 sm:text-2xl">
+                    &ldquo;What you wear should tell a story.&rdquo;
+                  </p>
+                </blockquote>
+
+                <div className="mt-6 space-y-4 text-sm leading-relaxed text-white/55 sm:text-base">
                   <p>
                     ZENJI is an anime streetwear label based in Australia,
-                    started in 2024 by people who grew up on late-night subs and
-                    long shonen arcs. We make anime graphic tees for anyone who
+                    started in 2024. We make anime graphic tees for anyone who
                     wants the reference to read as design first.
                   </p>
                   <p>
-                    Every drop starts as original artwork. Japanese
-                    streetwear&apos;s restraint — heavy cotton, muted colourways,
-                    one strong graphic — meets the anime we actually watch. Runs
-                    are small and finite: once a drop sells through, it is never
-                    reprinted.
+                    Japanese streetwear&apos;s restraint — heavy cotton, muted
+                    colourways, one strong graphic — meets the anime we actually
+                    watch. Runs are small and finite.
                   </p>
                 </div>
+
                 <a
                   href="#shop"
-                  className="mt-8 inline-flex border border-white/20 px-7 py-3.5 font-mono text-[11px] uppercase tracking-[0.25em] text-white transition-all hover:border-white hover:bg-white hover:text-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950"
+                  className="btn-ghost mt-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
                 >
                   Shop the Drop
                 </a>
@@ -80,21 +86,27 @@ export default function BrandSection() {
 
       <section
         id="details"
-        className="scroll-mt-28 border-t border-white/10 bg-black py-16 sm:py-20"
+        className="scroll-mt-28 border-t border-white/8 bg-background py-20 sm:py-24"
         aria-labelledby="details-heading"
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <ScrollReveal>
+            <p className="section-label mb-10">Why ZENJI</p>
+          </ScrollReveal>
           <h2 id="details-heading" className="sr-only">
             Product details
           </h2>
           <div className="grid gap-6 md:grid-cols-3 md:gap-8">
             {pillars.map((pillar, index) => (
-              <ScrollReveal key={pillar.title} delay={index * 100}>
-                <article className="h-full border border-white/10 bg-zinc-950/50 p-6 transition-colors duration-300 hover:border-white/25 sm:p-8">
-                  <h3 className="mb-3 font-display text-2xl uppercase tracking-wide text-white">
+              <ScrollReveal key={pillar.title} delay={index * 90}>
+                <article className="glass-panel h-full p-7 transition-colors duration-300 hover:border-white/15 sm:p-8">
+                  <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-white/30">
+                    0{index + 1}
+                  </span>
+                  <h3 className="mt-4 font-display text-2xl uppercase tracking-wide text-white">
                     {pillar.title}
                   </h3>
-                  <p className="text-sm leading-relaxed text-white/55">
+                  <p className="mt-3 text-sm leading-relaxed text-white/50">
                     {pillar.body}
                   </p>
                 </article>

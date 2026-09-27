@@ -1,10 +1,13 @@
 @import "tailwindcss";
 
 :root {
-  --background: #050505;
-  --foreground: #f5f5f0;
-  --muted: #a3a3a3;
-  --border: rgba(255, 255, 255, 0.1);
+  --background: #030303;
+  --foreground: #f4f4f0;
+  --muted: #8a8a86;
+  --border: rgba(255, 255, 255, 0.08);
+  --surface: #0a0a0a;
+  --surface-elevated: #111111;
+  --accent: #e8e4dc;
 }
 
 @theme inline {
@@ -12,6 +15,9 @@
   --color-foreground: var(--foreground);
   --color-muted: var(--muted);
   --color-border: var(--border);
+  --color-surface: var(--surface);
+  --color-surface-elevated: var(--surface-elevated);
+  --color-accent: var(--accent);
   --font-sans: var(--font-dm-sans);
   --font-display: var(--font-bebas);
   --font-mono: var(--font-ibm-plex-mono);
@@ -39,10 +45,13 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-dm-sans), system-ui, sans-serif;
+  background-image:
+    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(255, 255, 255, 0.04), transparent),
+    radial-gradient(ellipse 60% 40% at 100% 100%, rgba(255, 255, 255, 0.02), transparent);
 }
 
 ::selection {
-  background: rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.16);
   color: #fff;
 }
 
@@ -66,30 +75,105 @@ body {
   border-width: 0;
 }
 
-/* Film grain overlay */
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--font-ibm-plex-mono), ui-monospace, monospace;
+  font-size: 0.6875rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.section-label::before {
+  content: "";
+  display: block;
+  width: 2rem;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.glass-panel {
+  background: rgba(10, 10, 10, 0.72);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: var(--foreground);
+  color: var(--background);
+  padding: 1rem 2rem;
+  font-family: var(--font-ibm-plex-mono), ui-monospace, monospace;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 40px rgba(255, 255, 255, 0.12);
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: var(--foreground);
+  padding: 0.875rem 1.75rem;
+  font-family: var(--font-ibm-plex-mono), ui-monospace, monospace;
+  font-size: 0.6875rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  transition: border-color 0.25s ease, background 0.25s ease, color 0.25s ease;
+}
+
+.btn-ghost:hover {
+  border-color: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.04);
+}
+
 .grain {
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-/* Hero ken burns */
+.image-vignette::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.55) 0%,
+    transparent 45%
+  );
+  pointer-events: none;
+}
+
 @keyframes ken-burns {
   from {
     transform: scale(1);
   }
   to {
-    transform: scale(1.08);
+    transform: scale(1.06);
   }
 }
 
 .animate-ken-burns {
-  animation: ken-burns 18s ease-out forwards;
+  animation: ken-burns 22s ease-out forwards;
 }
 
-/* Fade up entrance */
 @keyframes fade-up {
   from {
     opacity: 0;
-    transform: translateY(24px);
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
@@ -98,7 +182,7 @@ body {
 }
 
 .animate-fade-up {
-  animation: fade-up 0.9s ease-out both;
+  animation: fade-up 0.85s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 .animation-delay-150 {
@@ -117,7 +201,6 @@ body {
   animation-delay: 600ms;
 }
 
-/* Marquee ticker */
 @keyframes marquee {
   from {
     transform: translateX(0);
@@ -128,10 +211,9 @@ body {
 }
 
 .animate-marquee {
-  animation: marquee 32s linear infinite;
+  animation: marquee 40s linear infinite;
 }
 
-/* Cart badge pop */
 @keyframes scale-in {
   from {
     transform: scale(0.6);
@@ -145,4 +227,18 @@ body {
 
 .animate-scale-in {
   animation: scale-in 0.25s ease-out;
+}
+
+@keyframes line-grow {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.animate-line-grow {
+  animation: line-grow 1s cubic-bezier(0.22, 1, 0.36, 1) 0.4s both;
+  transform-origin: left;
 }

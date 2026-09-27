@@ -4,8 +4,8 @@ A responsive one-page anime streetwear storefront built for the ZENJI hiring ass
 
 ## Live
 
+- **Demo:** [zenjidemo-production.up.railway.app](https://zenjidemo-production.up.railway.app/)
 - **Source:** [github.com/mrabid/zenji_demo](https://github.com/mrabid/zenji_demo)
-- **Build notes:** [BUILD_NOTES.md](./BUILD_NOTES.md)
 
 ## Quick start
 

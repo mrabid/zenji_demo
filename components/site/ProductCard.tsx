@@ -22,6 +22,8 @@ export default function ProductCard({ product, index }: ProductCardProps) {
   const [hovered, setHovered] = useState(false);
   const [added, setAdded] = useState(false);
 
+  const productNumber = String(index + 1).padStart(2, "0");
+
   function handleAddToCart() {
     if (!selectedSize) return;
     addItem(product, selectedSize);
@@ -30,9 +32,9 @@ export default function ProductCard({ product, index }: ProductCardProps) {
   }
 
   return (
-    <article className="group flex h-full flex-col transition-transform duration-500 hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:translate-y-0">
+    <article className="group flex h-full flex-col">
       <div
-        className="relative aspect-[4/5] overflow-hidden bg-zinc-900"
+        className="image-vignette relative aspect-[4/5] overflow-hidden bg-surface-elevated"
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
       >
@@ -40,8 +42,10 @@ export default function ProductCard({ product, index }: ProductCardProps) {
           src={product.image}
           alt={product.name}
           fill
-          className={`object-cover transition-all duration-700 group-hover:scale-[1.04] motion-reduce:transition-none ${
-            hovered && product.hoverImage ? "opacity-0" : "opacity-100"
+          className={`object-cover transition-all duration-700 ease-out motion-reduce:transition-none ${
+            hovered && product.hoverImage
+              ? "scale-[1.05] opacity-0"
+              : "scale-100 opacity-100"
           }`}
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
           priority={index < 2}
@@ -52,46 +56,52 @@ export default function ProductCard({ product, index }: ProductCardProps) {
             alt=""
             fill
             aria-hidden
-            className={`object-cover transition-all duration-700 group-hover:scale-[1.04] motion-reduce:transition-none ${
-              hovered ? "opacity-100" : "opacity-0"
+            className={`object-cover transition-all duration-700 ease-out motion-reduce:transition-none ${
+              hovered ? "scale-[1.05] opacity-100" : "scale-100 opacity-0"
             }`}
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
           />
         )}
+
+        <span className="absolute left-4 top-4 font-mono text-[10px] tracking-[0.2em] text-white/50">
+          {productNumber}
+        </span>
+
         {product.tag && (
-          <span className="absolute left-3 top-3 bg-white px-2.5 py-1 font-mono text-[10px] font-semibold uppercase tracking-[0.15em] text-black">
+          <span className="absolute right-4 top-4 bg-white px-2.5 py-1 font-mono text-[9px] font-semibold uppercase tracking-[0.18em] text-black">
             Sale {product.tag}
           </span>
         )}
-        <span className="absolute bottom-3 right-3 rounded-sm bg-black/50 px-2 py-1 font-mono text-[10px] uppercase tracking-[0.2em] text-white/80 backdrop-blur-sm">
+
+        <span className="absolute bottom-4 right-4 font-mono text-[9px] uppercase tracking-[0.25em] text-white/70">
           Limited
         </span>
       </div>
 
-      <div className="flex flex-1 flex-col border border-t-0 border-white/10 bg-zinc-950/50 p-4 transition-colors duration-300 group-hover:border-white/20 sm:p-5">
-        <div className="mb-3">
-          <h3 className="font-display text-xl uppercase tracking-[0.06em] text-white sm:text-2xl">
+      <div className="glass-panel flex flex-1 flex-col border-t-0 p-5 transition-colors duration-300 group-hover:border-white/15 sm:p-6">
+        <div className="mb-4">
+          <h3 className="font-display text-2xl uppercase tracking-[0.05em] text-white">
             {product.name}
           </h3>
-          <p className="mt-1 line-clamp-2 text-sm leading-relaxed text-white/50">
+          <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-white/45">
             {product.description}
           </p>
         </div>
 
-        <div className="mb-4 flex items-baseline gap-2">
-          <span className="font-mono text-sm font-medium text-white">
+        <div className="mb-5 flex items-baseline gap-2.5">
+          <span className="font-mono text-base font-medium text-white">
             {formatPrice(product.price)}
           </span>
           {product.compareAtPrice && (
-            <span className="font-mono text-sm text-white/35 line-through">
+            <span className="font-mono text-sm text-white/30 line-through">
               {formatPrice(product.compareAtPrice)}
             </span>
           )}
         </div>
 
-        <fieldset className="mb-4">
-          <legend className="mb-2 font-mono text-[10px] uppercase tracking-[0.25em] text-white/45">
-            Select size
+        <fieldset className="mb-5">
+          <legend className="mb-2.5 font-mono text-[10px] uppercase tracking-[0.28em] text-white/40">
+            Size
           </legend>
           <div className="flex flex-wrap gap-1.5">
             {SIZES.map((size) => {
@@ -102,10 +112,10 @@ export default function ProductCard({ product, index }: ProductCardProps) {
                   type="button"
                   onClick={() => setSelectedSize(size)}
                   aria-pressed={isSelected}
-                  className={`min-h-10 min-w-10 px-2 font-mono text-[11px] uppercase transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950 ${
+                  className={`min-h-9 min-w-9 px-2 font-mono text-[10px] uppercase transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 ${
                     isSelected
-                      ? "scale-105 bg-white text-black"
-                      : "border border-white/15 text-white/70 hover:border-white/40 hover:text-white"
+                      ? "bg-white text-black"
+                      : "border border-white/12 text-white/65 hover:border-white/35 hover:text-white"
                   }`}
                 >
                   {size}
@@ -119,10 +129,10 @@ export default function ProductCard({ product, index }: ProductCardProps) {
           type="button"
           onClick={handleAddToCart}
           disabled={!selectedSize}
-          className={`mt-auto inline-flex min-h-12 w-full items-center justify-center gap-2 border font-mono text-[11px] uppercase tracking-[0.25em] transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950 disabled:cursor-not-allowed disabled:opacity-35 ${
+          className={`mt-auto inline-flex min-h-11 w-full items-center justify-center gap-2 font-mono text-[10px] uppercase tracking-[0.26em] transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 disabled:cursor-not-allowed disabled:opacity-30 ${
             added
-              ? "border-emerald-400/50 bg-emerald-400/10 text-emerald-300"
-              : "border-white/20 bg-transparent text-white hover:border-white hover:bg-white hover:text-black disabled:hover:border-white/20 disabled:hover:bg-transparent disabled:hover:text-white"
+              ? "border border-emerald-400/40 bg-emerald-400/10 text-emerald-200"
+              : "btn-ghost disabled:hover:border-white/12 disabled:hover:bg-transparent"
           }`}
           aria-label={
             selectedSize
@@ -132,12 +142,12 @@ export default function ProductCard({ product, index }: ProductCardProps) {
         >
           {added ? (
             <>
-              <Check className="h-4 w-4" aria-hidden />
-              Added to Cart
+              <Check className="h-3.5 w-3.5" aria-hidden />
+              Added
             </>
           ) : (
             <>
-              <Plus className="h-4 w-4" aria-hidden />
+              <Plus className="h-3.5 w-3.5" aria-hidden />
               Add to Cart
             </>
           )}
