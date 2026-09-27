@@ -24,7 +24,8 @@ npm run dev
 3. Framework: **Next.js** (auto-detected)
 4. Root Directory: leave empty
 5. Deploy — no env variables required
-6. Use **your** project URL from the Vercel dashboard (not `zenji-demo.vercel.app`, which belongs to another account)
+6. **Important:** In Project Settings → Build & Deployment, leave **Output Directory empty**. Do not set `.next` or `public`.
+7. Use **your** project URL from the Vercel dashboard
 
 **Note:** Next.js 15 is used because Next.js 16 currently fails on Vercel's remote builder. `allowScripts` in `package.json` allows `sharp` install scripts on npm 11+.
 
